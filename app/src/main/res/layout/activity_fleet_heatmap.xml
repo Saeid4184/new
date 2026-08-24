@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar_bg"
+        android:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/fleet_heatmap_title"
+        app:titleTextColor="@color/white" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupCategory"
+        app:singleSelection="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dim_12">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMixer"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="میکسرها" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPump"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="پمپ‌ها" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipDump"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="کمپرسی و تریلی" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLogistics"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تدارکات" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dim_16"
+        android:paddingBottom="@dimen/dim_8"
+        android:text="@string/fleet_heatmap_hint"
+        android:textColor="@color/concrete_500"
+        android:textSize="@dimen/text_size_12" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_40"
+        android:gravity="center"
+        android:text="@string/fleet_heatmap_empty"
+        android:textColor="@color/concrete_500"
+        android:textSize="@dimen/text_size_14"
+        android:visibility="gone" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/dim_16"
+        app:cardBackgroundColor="@color/colorSurface"
+        app:cardCornerRadius="@dimen/dim_16"
+        app:cardElevation="@dimen/dim_1">
+
+        <ir.factory.entryexit.ui.view.VehicleDiagramView
+            android:id="@+id/diagramView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

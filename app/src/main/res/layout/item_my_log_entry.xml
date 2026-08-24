@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dim_16"
+    android:layout_marginVertical="@dimen/dim_5"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/colorSurface"
+    app:cardCornerRadius="@dimen/dim_14"
+    app:cardElevation="@dimen/dim_1"
+    app:strokeWidth="@dimen/dim_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_14">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvActionBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_inside"
+                    android:paddingHorizontal="@dimen/dim_8"
+                    android:paddingVertical="@dimen/dim_2"
+                    android:textSize="@dimen/text_size_11"
+                    android:textStyle="bold"
+                    tools:text="ورود" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_8"
+                    android:textColor="@color/concrete_900"
+                    android:textSize="@dimen/text_size_15"
+                    android:textStyle="bold"
+                    tools:text="احمد رضایی" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_4"
+                android:textColor="@color/concrete_500"
+                android:textSize="@dimen/text_size_12"
+                tools:text="پرسنل · درب ورودی" />
+
+            <TextView
+                android:id="@+id/tvTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_4"
+                android:textColor="@color/concrete_900"
+                android:textSize="@dimen/text_size_13"
+                tools:text="۱۴۰۵/۰۵/۲۸  ۱۴:۲۲" />
+
+            <TextView
+                android:id="@+id/tvEditedBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_4"
+                android:textColor="@color/safety_amber"
+                android:textSize="@dimen/text_size_11"
+                android:visibility="gone"
+                tools:text="اصلاح‌شده · قبلاً: ۱۴۰۵/۰۵/۲۸ ۱۳:۵۰"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dim_20"
+            android:layout_height="@dimen/dim_20"
+            android:layout_gravity="center_vertical"
+            android:alpha="0.5"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_calendar"
+            app:tint="@color/concrete_500" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.ConcreteFactory.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dim_10"
+    app:cardBackgroundColor="@color/accent_item_log_glass"
+    app:strokeColor="@color/accent_item_log">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dim_14">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDirectionBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dim_8"
+                android:paddingVertical="@dimen/dim_3"
+                android:textSize="@dimen/text_size_11"
+                android:textStyle="bold"
+                tools:background="@drawable/bg_status_inside"
+                tools:text="ورود"
+                tools:textColor="@color/status_green" />
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dim_8"
+                android:layout_weight="1"
+                android:textColor="@color/concrete_900"
+                android:textSize="@dimen/text_size_15"
+                android:textStyle="bold"
+                tools:text="روغن هیدرولیک" />
+
+            <TextView
+                android:id="@+id/tvTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/concrete_500"
+                android:textSize="@dimen/text_size_11"
+                tools:text="1404/05/17 — 10:24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_6"
+            android:textColor="@color/concrete_700"
+            android:textSize="@dimen/text_size_13"
+            tools:text="فروشگاه: صنعتی البرز — خریدار: رضایی — واحد: تعمیرگاه — فاکتور: ۱۲۳۴" />
+
+        <TextView
+            android:id="@+id/tvReturnStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_6"
+            android:background="@drawable/bg_status_inside"
+            android:paddingHorizontal="@dimen/dim_8"
+            android:paddingVertical="@dimen/dim_3"
+            android:textColor="@color/status_green"
+            android:textSize="@dimen/text_size_11"
+            android:visibility="gone"
+            tools:text="برگشت داده شد" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMarkReturned"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8"
+            android:layout_gravity="start"
+            android:text="@string/item_log_mark_returned"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

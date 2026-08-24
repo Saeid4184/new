@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/dim_24">
+
+    <ImageView
+        android:id="@+id/ivCheckpointLogo"
+        android:layout_width="@dimen/dim_72"
+        android:layout_height="@dimen/dim_72"
+        android:layout_marginBottom="@dimen/dim_12"
+        android:contentDescription="@null"
+        android:src="@drawable/app_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkpoint_picker_title"
+        android:textColor="@color/concrete_900"
+        android:textSize="@dimen/text_size_20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_6"
+        android:layout_marginBottom="@dimen/dim_28"
+        android:gravity="center"
+        android:text="@string/checkpoint_picker_subtitle"
+        android:textColor="@color/concrete_500"
+        android:textSize="@dimen/text_size_14" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardGate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dim_14"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/colorSurface"
+        app:cardCornerRadius="@dimen/dim_18"
+        app:cardElevation="@dimen/dim_2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dim_20">
+
+            <FrameLayout
+                android:layout_width="@dimen/dim_52"
+                android:layout_height="@dimen/dim_52"
+                android:background="@drawable/bg_icon_circle">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_26"
+                    android:layout_height="@dimen/dim_26"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_check_in"
+                    app:tint="@color/accent_visitor" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dim_14"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkpoint_gate_title"
+                    android:textColor="@color/concrete_900"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_3"
+                    android:text="@string/checkpoint_gate_subtitle"
+                    android:textColor="@color/concrete_500"
+                    android:textSize="@dimen/text_size_12" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardParking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/colorSurface"
+        app:cardCornerRadius="@dimen/dim_18"
+        app:cardElevation="@dimen/dim_2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dim_20">
+
+            <FrameLayout
+                android:layout_width="@dimen/dim_52"
+                android:layout_height="@dimen/dim_52"
+                android:background="@drawable/bg_icon_circle">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_26"
+                    android:layout_height="@dimen/dim_26"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_machinery"
+                    app:tint="@color/accent_machinery" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dim_14"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkpoint_parking_title"
+                    android:textColor="@color/concrete_900"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_3"
+                    android:text="@string/checkpoint_parking_subtitle"
+                    android:textColor="@color/concrete_500"
+                    android:textSize="@dimen/text_size_12" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

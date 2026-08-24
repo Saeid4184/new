@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dim_6"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/colorSurface"
+    app:cardCornerRadius="@dimen/dim_16"
+    app:cardElevation="@dimen/dim_2"
+    app:strokeColor="@color/accent_personnel"
+    app:strokeWidth="@dimen/dim_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Solid color-coded edge so each of the 7 sections reads as its own color at a
+             glance — same accent used for the icon chip, just doubled up for visibility. -->
+        <View
+            android:id="@+id/colorStripe"
+            android:layout_width="@dimen/dim_5"
+            android:layout_height="match_parent"
+            android:background="@color/accent_personnel" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dim_14"
+            android:paddingVertical="@dimen/dim_16">
+
+            <FrameLayout
+                android:id="@+id/iconChip"
+                android:layout_width="@dimen/dim_48"
+                android:layout_height="@dimen/dim_48"
+                android:background="@drawable/bg_icon_circle">
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="@dimen/dim_24"
+                    android:layout_height="@dimen/dim_24"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_personnel" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dim_12"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/concrete_900"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    tools:text="پرسنل" />
+
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_2"
+                    android:textColor="@color/concrete_500"
+                    android:textSize="@dimen/text_size_12"
+                    tools:text="ثبت و مشاهده تردد پرسنل" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/dim_18"
+                android:layout_height="@dimen/dim_18"
+                android:alpha="0.6"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_chevron_left"
+                app:tint="@color/concrete_500" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/menu_dashboard"
+        android:contentDescription="@string/menu_dashboard"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_search"
+        android:contentDescription="@string/menu_search"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_setup"
+        android:icon="@drawable/ic_setup"
+        android:title="@string/menu_setup"
+        android:contentDescription="@string/menu_setup"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_my_logs"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/menu_my_logs"
+        android:contentDescription="@string/menu_my_logs"
+        app:iconTint="@color/white"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_gear"
+        android:title="@string/menu_settings"
+        android:contentDescription="@string/menu_settings"
+        app:iconTint="@color/white"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sign_out"
+        android:icon="@drawable/ic_sign_out"
+        android:title="@string/menu_sign_out"
+        android:contentDescription="@string/menu_sign_out"
+        app:iconTint="@color/white"
+        app:showAsAction="never" />
+
+</menu>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Lets the system start downloading Vazirmatn right after install instead of on first
+         use, so the first screen a guard opens doesn't show a brief system-font flash. -->
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/vazirmatn</item>
+    </array>
+</resources>

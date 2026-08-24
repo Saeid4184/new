@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.ConcreteFactory.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dim_10"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_14">
+
+        <FrameLayout
+            android:layout_width="@dimen/dim_44"
+            android:layout_height="@dimen/dim_44"
+            android:background="@drawable/bg_icon_circle">
+
+            <ImageView
+                android:id="@+id/ivPhoto"
+                android:layout_width="@dimen/dim_44"
+                android:layout_height="@dimen/dim_44"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivTypeIcon"
+                android:layout_width="@dimen/dim_20"
+                android:layout_height="@dimen/dim_20"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_14"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/concrete_900"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold"
+                tools:text="علی رضایی" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_2"
+                android:textColor="@color/concrete_500"
+                android:textSize="@dimen/text_size_13"
+                tools:text="آخرین وضعیت: داخل کارخانه" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnCheckOut"
+                android:layout_width="@dimen/dim_56"
+                android:layout_height="@dimen/dim_36"
+                android:layout_marginEnd="@dimen/dim_6"
+                android:background="@drawable/bg_action_button"
+                android:backgroundTint="@color/danger_red"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/action_out_label"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnCheckIn"
+                android:layout_width="@dimen/dim_56"
+                android:layout_height="@dimen/dim_36"
+                android:background="@drawable/bg_action_button"
+                android:backgroundTint="@color/status_green"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/action_in_label"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is the requester signed in at all?
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Helper: does the requester's own "users/{uid}" document say role == "ADMIN"?
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "ADMIN";
+    }
+
+    // persons: every signed-in guard/admin can read and write (check-in/out, add, edit).
+    // This intentionally does NOT restrict writes further (e.g. to "only admins can delete")
+    // because guards need to freely check people in/out and register new visitors/drivers
+    // as part of normal, everyday use.
+    match /persons/{personId} {
+      allow read, write: if isSignedIn();
+    }
+
+    // logs: append-only for almost every field — every signed-in user can create a new log
+    // entry (a check-in/out), and everyone can read them (for the activity feed and reports).
+    // Two exceptions: a guard may correct the *timestamp* on a log THEY created (e.g. they
+    // logged something a few minutes late), and an admin may correct any log's timestamp. This
+    // only allows changing the timestamp + audit-trail fields — never who/what/where the event
+    // was about — so history stays trustworthy while still being fixable when the guard just
+    // mistimed logging it. A guard may also delete a log THEY created (e.g. an accidental
+    // double-tap or the wrong person picked by mistake), and an admin may delete any log.
+    match /logs/{logId} {
+      allow read, create: if isSignedIn();
+      allow update: if isSignedIn() &&
+        (resource.data.performedByUid == request.auth.uid || isAdmin()) &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(["timestamp", "originalTimestamp", "editedAt", "editedByUid", "editedByName"]);
+      allow delete: if isSignedIn() &&
+        (resource.data.performedByUid == request.auth.uid || isAdmin());
+    }
+
+    // inspections: weekly machinery visual/exterior inspections. Same pattern as logs — every
+    // signed-in guard/admin can create a new inspection record and everyone can read them (for
+    // the tab-5 status list and Excel export). Unlike logs, a guard may need to correct an
+    // inspection they got wrong (wrong part/vehicle tapped) via Repository.correctInspection,
+    // or flip a part to repaired via Repository.markPartRepaired — both rewrite the whole
+    // document in place, so updates must stay open to any signed-in user; it's never deletable.
+    match /inspections/{inspectionId} {
+      allow read, create, update: if isSignedIn();
+      allow delete: if false;
+    }
+
+    // settings/app: shared config (currently just the Gemini API key) so it only needs to be
+    // entered once — either in the app or the web panel — instead of separately in each.
+    match /settings/{docId} {
+      allow read, write: if isSignedIn();
+    }
+
+    // meta/fleetSeeded: written once via a transaction when the app first seeds the fixed
+    // machinery roster. Any signed-in user may attempt it (the transaction itself prevents
+    // duplicate seeding); nobody should delete it.
+    match /meta/{docId} {
+      allow read, write: if isSignedIn();
+      allow delete: if false;
+    }
+
+    // itemLogs: ورود و خروج اقلام و کالاها. Same append-only pattern as logs/inspections —
+    // every signed-in guard/admin can register a new entry/exit, and everyone can read them
+    // (for the tab-6 list, autocomplete suggestions, and Excel export). Updates are only
+    // allowed to flip the "isReturned"/"returnedAt" fields (ticking "برگشت" later), never a
+    // full rewrite of a historical record.
+    match /itemLogs/{itemLogId} {
+      allow read, create: if isSignedIn();
+      allow update: if isSignedIn() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(["isReturned", "returnedAt"]);
+      allow delete: if false;
+    }
+
+    // users: everyone signed in can read (needed so the web panel/app can look up names for
+    // "who performed this" displays), but a user can only ever edit their OWN profile, and
+    // only an existing admin can change someone else's role (e.g. promoting a guard to admin).
+    match /users/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isSignedIn() && (request.auth.uid == uid || isAdmin());
+      allow delete: if isAdmin();
+    }
+  }
+}

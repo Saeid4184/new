@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Gives every Activity a soft slide+fade transition instead of the flat default cut,
+         applied once here at the theme level so it covers all screens without touching every
+         startActivity() call. -->
+    <style name="WindowAnimation.ConcreteFactory" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <!-- Confirm/edit/add dialogs ease in from slightly below instead of just popping into
+         place. -->
+    <style name="DialogAnimation.ConcreteFactory" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+    <!-- Parent is intentionally the plain (non-DayNight) MaterialComponents dark base, NOT
+         Theme.MaterialComponents.DayNight.NoActionBar. This app has no values-night resources —
+         colors.xml is a single fixed dark palette used in every mode on purpose (see its header
+         comment). With a DayNight parent, calling AppCompatDelegate.setDefaultNightMode
+         (MODE_NIGHT_NO from the "روشن"/Light option in Settings) made the *Material library's
+         own* un-overridden internal defaults (radio/checkbox tinting, popups, list items, etc.)
+         resolve to their light-mode variant, while our own background/surface colors stayed
+         fixed dark — so anything relying on those internal defaults went invisible (light text
+         assumptions colliding with our permanently dark surface). Using the plain dark
+         MaterialComponents base removes that split: every default the library falls back to is
+         now always the dark one, matching our palette, regardless of what the user picks in the
+         theme setting. (AppPreferences.applyThemeMode still calls setDefaultNightMode when the
+         user picks "روشن"/"تیره"/"سیستم" — it's now harmless since night mode no longer changes
+         which resource set gets used.) -->
+    <style name="Theme.ConcreteFactory" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/toolbar_bg</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/concrete_900</item>
+        <item name="colorOnBackground">@color/concrete_900</item>
+        <item name="android:statusBarColor">@color/toolbar_bg</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <!-- Fixes plain (non-Material) framework popups — e.g. the department AutoCompleteTextView
+             dropdown, which renders through a system ListPopupWindow, not a Material component.
+             Without this it fell back to the platform's own light popup background regardless of
+             app theme, so our (correctly dark-mode-inverted) text color rendered near-invisible
+             on top of it — light text on a light popup. Pointing this at our own themed surface
+             color fixes that popup and every other floating/backgroundFloating-driven system
+             surface at once. -->
+        <item name="android:colorBackgroundFloating">@color/colorSurface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="materialButtonStyle">@style/Widget.ConcreteFactory.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ConcreteFactory.Dialog</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimation.ConcreteFactory</item>
+        <!-- Persian-optimized typeface (Vazirmatn) applied app-wide via the theme, so every
+             screen picks it up without touching each individual layout. -->
+        <item name="android:fontFamily">@font/vazirmatn</item>
+        <item name="fontFamily">@font/vazirmatn</item>
+        <!-- These were the actual source of the "دیده نمی‌شود" complaints: with none of them
+             set explicitly, every SYSTEM-rendered surface that isn't one of our own XML
+             TextViews (Toolbar overflow/options menu, Spinner/AutoCompleteTextView popups,
+             MaterialAlertDialogBuilder .setItems() lists, and the EditText/TextInputLayout
+             caret + focus underline) fell back to whatever Material's un-overridden default
+             happened to resolve to, which isn't guaranteed to invert correctly between our two
+             themes just because the parent is DayNight. Pointing them at colors that ARE
+             correctly overridden per-theme (concrete_900/concrete_500 in values-night) fixes
+             every one of those surfaces at once instead of patching each screen individually. -->
+        <item name="android:textColorPrimary">@color/concrete_900</item>
+        <item name="android:textColorSecondary">@color/concrete_500</item>
+        <item name="android:textColorHint">@color/concrete_500</item>
+        <item name="colorControlNormal">@color/concrete_500</item>
+        <item name="colorControlActivated">@color/safety_amber</item>
+        <item name="colorControlHighlight">@color/concrete_300</item>
+    </style>
+
+    <!-- Dialog buttons (ثبت/انصراف on every confirm dialog, including "ثبت راننده جدید") default
+         to using colorPrimary as their text color. In dark mode colorPrimary (toolbar_bg,
+         #1F2429) is nearly the same shade as the dialog's own dark surface, so the buttons were
+         basically invisible. Forcing android:textColor directly on the button style — instead of
+         only overriding colorPrimary and hoping it's inherited correctly — is the more reliable
+         fix: it can't be re-overridden by some other theme attribute further down the chain.
+         colorSurface/colorOnSurface/textColorPrimary are set here too, for the same reason as
+         the main theme above — a MaterialAlertDialogBuilder .setItems() list (used for the
+         machinery cargo-type picker, for one) renders its rows using THIS overlay's roles, not
+         the Activity theme's, so without these the list itself — not just its buttons — was
+         unreadable in dark mode. -->
+    <style name="ThemeOverlay.ConcreteFactory.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/safety_amber_dark</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/concrete_900</item>
+        <item name="android:textColorPrimary">@color/concrete_900</item>
+        <item name="android:textColorSecondary">@color/concrete_500</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ConcreteFactory.Dialog.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ConcreteFactory.Dialog.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/ConcreteFactory.Dialog.Button</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation.ConcreteFactory</item>
+    </style>
+
+    <style name="ConcreteFactory.Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.ConcreteFactory.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Widget.ConcreteFactory.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <!-- Outlined buttons previously fell back to Material's default text/icon color
+             (colorPrimary, which is toolbar_bg — a near-black #14171C) against this app's dark
+             background, so every outlined button's label was essentially unreadable (e.g. the
+             report menu on AdminDashboard). Forced to white here, at the style level, so it's
+             fixed everywhere this style is used, not just one screen. -->
+        <item name="android:textColor">@color/white</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <!-- Every list-row/summary card in the app should use this instead of a bare CardView.
+         MaterialCardView (unlike plain CardView) applies Material's dark-theme "tonal
+         elevation" automatically — the higher a surface sits, the lighter its background tint —
+         which is what actually reads as "lifted" in a dark UI; a raw drop-shadow barely shows
+         up against a dark background. The 1dp stroke gives a crisp edge even where the tonal
+         shift alone is too subtle to notice. -->
+    <style name="Widget.ConcreteFactory.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="strokeColor">@color/concrete_200</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">@color/safety_amber</item>
+    </style>
+
+    <style name="CategoryTile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">140dp</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">3dp</item>
+    </style>
+
+    <style name="SettingsSectionHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/concrete_500</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SettingsCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+
+    <style name="SettingsSwitchRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">14dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SettingsDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="android:background">@color/concrete_200</item>
+    </style>
+</resources>

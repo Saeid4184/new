@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dim_10"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/accent_inspection_glass"
+    app:cardCornerRadius="@dimen/dim_16"
+    app:cardElevation="@dimen/dim_1"
+    app:strokeColor="@color/accent_inspection"
+    app:strokeWidth="@dimen/dim_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dim_14">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/dim_44"
+                android:layout_height="@dimen/dim_44"
+                android:background="@drawable/bg_icon_circle"
+                android:backgroundTint="@color/accent_inspection_bg">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_20"
+                    android:layout_height="@dimen/dim_20"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_inspection"
+                    app:tint="@color/accent_inspection" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dim_14"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPlate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/concrete_900"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    tools:text="پلاک 69744 — کمپرسی تریلی - فاو" />
+
+                <TextView
+                    android:id="@+id/tvDriver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_2"
+                    android:textColor="@color/concrete_500"
+                    android:textSize="@dimen/text_size_13"
+                    tools:text="راننده: سیروس انصاری" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvInspectionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_10"
+            android:background="@drawable/bg_status_inside"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dim_10"
+            android:textSize="@dimen/text_size_13"
+            android:textStyle="bold"
+            tools:text="این هفته انجام شد — ۳۲ تایید، ۱ عدم تایید" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

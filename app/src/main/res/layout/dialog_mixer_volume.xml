@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Machinery / MIXER only: when a mixer checks out carrying an actual concrete load (any
+     cargo option other than "بدون بار (خالی)"), the guard is asked how many cubic meters of
+     concrete it's carrying so the dispatch is fully documented. No escape-hatch checkbox here
+     (unlike dialog_logistics_detail.xml) — the cargo type is already known to be a real load
+     by the time this dialog is shown, so the volume is always required. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dim_24">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilVolume"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusBottomEnd="@dimen/dim_12"
+        app:boxCornerRadiusBottomStart="@dimen/dim_12"
+        app:boxCornerRadiusTopEnd="@dimen/dim_12"
+        app:boxCornerRadiusTopStart="@dimen/dim_12"
+        app:suffixText="@string/mixer_volume_suffix">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

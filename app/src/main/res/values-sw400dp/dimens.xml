@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Box/frame dimensions (padding, margins, sizes, corner radii, elevation) -->
+    <dimen name="dim_0">0dp</dimen>
+    <dimen name="dim_1">1.1dp</dimen>
+    <dimen name="dim_2">2.2dp</dimen>
+    <dimen name="dim_3">3.2dp</dimen>
+    <dimen name="dim_4">4.3dp</dimen>
+    <dimen name="dim_5">5.4dp</dimen>
+    <dimen name="dim_6">6.5dp</dimen>
+    <dimen name="dim_8">8.6dp</dimen>
+    <dimen name="dim_10">10.8dp</dimen>
+    <dimen name="dim_12">13dp</dimen>
+    <dimen name="dim_14">15.1dp</dimen>
+    <dimen name="dim_16">17.3dp</dimen>
+    <dimen name="dim_18">19.4dp</dimen>
+    <dimen name="dim_20">21.6dp</dimen>
+    <dimen name="dim_22">23.8dp</dimen>
+    <dimen name="dim_24">25.9dp</dimen>
+    <dimen name="dim_26">28.1dp</dimen>
+    <dimen name="dim_28">30.2dp</dimen>
+    <dimen name="dim_30">32.4dp</dimen>
+    <dimen name="dim_36">38.9dp</dimen>
+    <dimen name="dim_40">43.2dp</dimen>
+    <dimen name="dim_44">47.5dp</dimen>
+    <dimen name="dim_48">51.8dp</dimen>
+    <dimen name="dim_52">56.2dp</dimen>
+    <dimen name="dim_56">60.5dp</dimen>
+    <dimen name="dim_60">64.8dp</dimen>
+    <dimen name="dim_72">77.8dp</dimen>
+    <dimen name="dim_90">97.2dp</dimen>
+    <dimen name="dim_96">103.7dp</dimen>
+    <dimen name="dim_130">140.4dp</dimen>
+    <dimen name="dim_240">259.2dp</dimen>
+    <!-- Text sizes -->
+    <dimen name="text_size_11">11.6sp</dimen>
+    <dimen name="text_size_12">12.6sp</dimen>
+    <dimen name="text_size_13">13.7sp</dimen>
+    <dimen name="text_size_14">14.7sp</dimen>
+    <dimen name="text_size_15">15.8sp</dimen>
+    <dimen name="text_size_16">16.8sp</dimen>
+    <dimen name="text_size_18">18.9sp</dimen>
+    <dimen name="text_size_20">21sp</dimen>
+</resources>

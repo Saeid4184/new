@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand palette: warm charcoal + muted gold. Deliberately dark in BOTH day and night
+         mode (not just values-night) — this app is used for long stretches by security staff,
+         often at night, so a single low-glare dark look beats fighting the device's system
+         theme. Tones are kept soft/desaturated rather than a near-black-on-white swap, to
+         reduce eye strain versus a high-contrast dark theme. -->
+    <color name="concrete_900">#ECEDEE</color>
+    <color name="concrete_800">#D7D9DC</color>
+    <color name="concrete_700">#B7BBC0</color>
+    <color name="concrete_500">#8A93A0</color>
+    <color name="concrete_300">#616B78</color>
+    <color name="concrete_200">#2B323B</color>
+    <color name="concrete_100">#20262E</color>
+    <color name="concrete_050">#171B21</color>
+
+    <!-- Fixed brand color for toolbars/tabs/status bar and text-on-accent — kept a shade
+         darker than the page background so the toolbar/tab strip still reads as a distinct
+         band rather than blending flat into the content beneath it. -->
+    <color name="toolbar_bg">#14171C</color>
+
+    <color name="safety_amber">#D9B36C</color>
+    <color name="safety_amber_dark">#C39A55</color>
+
+    <color name="status_green">#5FB87C</color>
+    <color name="status_green_bg">#1F2A22</color>
+    <color name="status_gray_bg">#232A32</color>
+
+    <color name="danger_red">#D97757</color>
+    <color name="header_bg">#20262E</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="colorPrimary">@color/toolbar_bg</color>
+    <color name="colorPrimaryVariant">@color/concrete_100</color>
+    <color name="colorSecondary">@color/safety_amber</color>
+    <color name="colorSecondaryVariant">@color/safety_amber_dark</color>
+    <color name="colorBackground">#171B21</color>
+    <color name="colorSurface">#1E242B</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+
+    <!-- Per-category accent + matching muted background tint, used for the duotone icon
+         chips (a colored glyph sitting on its own soft-tinted square) shown next to each
+         person/vehicle row. -->
+    <color name="accent_personnel">#D9B36C</color>
+    <color name="accent_personnel_bg">#2E2A20</color>
+
+    <color name="accent_machinery">#6FA8C9</color>
+    <color name="accent_machinery_bg">#1D2933</color>
+
+    <color name="accent_visitor">#8FBF8A</color>
+    <color name="accent_visitor_bg">#202A21</color>
+
+    <color name="accent_driver">#B79AE0</color>
+    <color name="accent_driver_bg">#262233</color>
+
+    <color name="accent_inspection">#E0A15E</color>
+    <color name="accent_inspection_bg">#2E2419</color>
+
+    <color name="accent_item_log">#6FC9B0</color>
+    <color name="accent_item_log_bg">#1D2E29</color>
+
+    <color name="accent_report">#D97757</color>
+    <color name="accent_report_bg">#2E211B</color>
+
+    <!-- "Glass" card fills: same 7 category accents as above, but at ~16% opacity (alpha 29 hex)
+         so a card reads as a soft tint of its own color over the dark page background rather
+         than a flat opaque block — paired with the fully-opaque accent as the card's stroke for
+         a crisp colored edge. Used as MaterialCardView cardBackgroundColor; danger_red_glass
+         covers the open-defects list, which uses danger_red rather than a dedicated accent. -->
+    <color name="accent_personnel_glass">#29D9B36C</color>
+    <color name="accent_machinery_glass">#296FA8C9</color>
+    <color name="accent_visitor_glass">#298FBF8A</color>
+    <color name="accent_driver_glass">#29B79AE0</color>
+    <color name="accent_inspection_glass">#29E0A15E</color>
+    <color name="accent_item_log_glass">#296FC9B0</color>
+    <color name="accent_report_glass">#29D97757</color>
+    <color name="danger_red_glass">#29D97757</color>
+</resources>

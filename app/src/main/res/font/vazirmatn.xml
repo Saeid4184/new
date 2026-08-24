@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Vazirmatn — an open-source Persian/Latin typeface with full Farsi digit and glyph support,
+    requested from Google's font provider (bundled with Google Play services) so the real
+    font file doesn't need to ship inside the APK. Falls back to the system default
+    automatically on devices without Play services, so this is safe even on kiosk-style
+    hardware that may lack it.
+-->
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:fontProviderAuthority="com.google.android.gms.fonts"
+    app:fontProviderPackage="com.google.android.gms"
+    app:fontProviderQuery="Vazirmatn"
+    app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>

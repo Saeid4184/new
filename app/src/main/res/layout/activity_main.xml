@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar_bg"
+        android:elevation="@dimen/dim_4">
+
+        <!-- Custom title content (title/subtitle now driven directly by tvToolbarTitle /
+             tvToolbarSubtitle from MainActivity instead of supportActionBar.title/subtitle —
+             see setDisplayShowTitleEnabled(false) in onCreate) built around ivToolbarLogo, which
+             is kept in a continuous "spinning coin" animation via AnimUtils.startCoinSpin. A
+             plain android:logo drawable is baked into the Toolbar's own internal ImageView,
+             which isn't exposed as a View we could animate — hence this custom layout instead. -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivToolbarLogo"
+                android:layout_width="@dimen/dim_30"
+                android:layout_height="@dimen/dim_30"
+                android:layout_marginEnd="@dimen/dim_10"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:src="@drawable/app_logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvToolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvToolbarSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvOfflineBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/danger_red"
+        android:gravity="center"
+        android:padding="@dimen/dim_6"
+        android:text="@string/offline_banner_text"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <!-- Manual shadow strip rather than relying on View.elevation's shadow render order —
+         guaranteed visible separation between the app bar and the menu content below it. -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_6"
+        android:background="@drawable/shadow_gradient_down" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="@dimen/dim_240"
+            android:layout_height="@dimen/dim_240"
+            android:layout_gravity="center"
+            android:alpha="0.10"
+            android:clickable="false"
+            android:contentDescription="@null"
+            android:focusable="false"
+            android:importantForAccessibility="no"
+            android:src="@drawable/app_logo_large" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHomeMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/dim_6"
+            android:paddingVertical="@dimen/dim_10"
+            tools:listitem="@layout/item_home_menu" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvFooterCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dim_10"
+        android:gravity="center"
+        android:text="@string/home_footer_credit"
+        android:textColor="@color/concrete_300"
+        android:textSize="@dimen/text_size_11" />
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dim_10"
+    app:cardBackgroundColor="@color/colorSurface"
+    app:cardCornerRadius="@dimen/dim_16"
+    app:cardElevation="@dimen/dim_1"
+    app:strokeWidth="@dimen/dim_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_12">
+
+        <FrameLayout
+            android:layout_width="@dimen/dim_48"
+            android:layout_height="@dimen/dim_48"
+            android:background="@drawable/bg_icon_circle">
+
+            <ImageView
+                android:id="@+id/ivPhoto"
+                android:layout_width="@dimen/dim_48"
+                android:layout_height="@dimen/dim_48"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivTypeIcon"
+                android:layout_width="@dimen/dim_22"
+                android:layout_height="@dimen/dim_22"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_14"
+            android:layout_weight="1"
+            android:textColor="@color/concrete_900"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold"
+            tools:text="علی رضایی" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPickImage"
+                style="@style/Widget.ConcreteFactory.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_6"
+                android:minWidth="@dimen/dim_0"
+                android:minHeight="@dimen/dim_0"
+                android:paddingHorizontal="@dimen/dim_10"
+                android:paddingVertical="@dimen/dim_4"
+                android:text="@string/setup_pick_image"
+                android:textSize="@dimen/text_size_11"
+                app:icon="@drawable/ic_gallery"
+                app:iconSize="16dp"
+                app:iconPadding="4dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTakePhoto"
+                style="@style/Widget.ConcreteFactory.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/dim_0"
+                android:minHeight="@dimen/dim_0"
+                android:paddingHorizontal="@dimen/dim_10"
+                android:paddingVertical="@dimen/dim_4"
+                android:text="@string/setup_take_photo"
+                android:textSize="@dimen/text_size_11"
+                app:icon="@drawable/ic_photo"
+                app:iconSize="16dp"
+                app:iconPadding="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
